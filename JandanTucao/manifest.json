@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Jandan Tucao",
+  "version": "1.0",
+  "web_accessible_resources": [
+    "mytucao.js",
+    "mytucao_inject.js"
+  ],
+  "content_scripts": [
+   {
+      "matches": ["*://jandan.net/*"],
+      "js": ["contents.js"]
+    }
+  ]
+}
