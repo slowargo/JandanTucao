@@ -68,7 +68,7 @@ function injectTucaoFix() {
                         //如果这里放过了，很可能加载完成后多说返回990015，评论区就直接显示990015了
                         return false;
                     }
-                    if (retry-- > 0 && res.length < 30) {
+                    if (retry-- > 0 && res.length > 0 && res.length < 30) {
                         console.log(res + " retry: " + retry);
                         //重新加载评论框
                         $(sub_div[0]).html('');
