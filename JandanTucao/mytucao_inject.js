@@ -1,25 +1,4 @@
-/*
-var override_loaded = false;
-
-function override_tucao_js() {
-	console.log("overload? "+ override_loaded);
-	if (override_loaded)
-		return;
-	override_loaded = true;
-	chrome.webRequest.onBeforeRequest.addListener(
-	    function(details) {
-	        if( details.url == "http://cdn.jandan.net/static/js/tucao.js?v=20161230" ) {
-	        		console.log(details);
-	            return {redirectUrl: chrome.extension.getURL('mytucao.js') };
-	        }
-	    },
-	    {urls: ["*://cdn.jandan.net/*.js"]},
-	    ["blocking"]);
-}
-*/
-
 var myElement = document.querySelectorAll("span.time");
-//console.log(myElement);
 
 for ( var i = 0 ; i < myElement.length; i++) {
 	//console.log("i:" + i + " ? " + myElement[i]);
@@ -61,21 +40,6 @@ for ( var i = 0 ; i < myElement.length; i++) {
             var sub_div = comment_container.find('div');
             
             var retry = 3;
-            /*
-            if (sub_div.length == 0) {
-				        sub_div = $('<div></div>');
-				        sub_div.attr('data-thread-key', comment_id);
-				        sub_div.attr("data-url", comment_url);
-				        if (img_url) {
-				            sub_div.attr('data-image', img_url);
-				        }
-				        comment_container.append(sub_div[0]);            	
-				        sub_div = comment_container.find('div');
-            }
-            */
-            
-            //sub_div.attr('data-thread-key-xx', comment_id);
-            //sub_div.attr("data-url", comment_url);
 		                               
 						//console.log(comment_container.find('div')[0]);
 						//console.log(i.data("initialized"));
@@ -224,12 +188,17 @@ for ( var i = 0 ; i < myElement.length; i++) {
                         function () {
                             // the code that tests here... (return true if test passes; false otherwise)
                             var r = $('#comment-box-' + comment_id).find('#ds-thread').length > 0;
-                            //煎蛋多说评论框拯救计划v.02
+                            //煎蛋多说评论框拯救计划v.03
                             //如果多说返回服务异常，立刻重试（希望不会刷挂多说的服务器）
                             //if (r && $(sub_div[0]).html() == '评论框出错啦(990015): 服务异常,请联系客服人员') {
                             var res = $(sub_div[0]).html();
                             if (r) {
-                            	if (retry-- > 0 && res.length < 30 && res != '<div id="ds-waiting"></div>') {
+                            	if (res == '<div id="ds-waiting"></div>') {
+                            		//如果这里放过了，很可能加载完成后多说返回990015，评论区就直接显示990015了
+                            		return false;
+                            	}
+                            	//if (retry-- > 0 && res.length < 30 && res != '<div id="ds-waiting"></div>') {
+                            	if (retry-- > 0 && res.length < 30) {
 	                            	console.log(res + " retry: " + retry);
 																$(sub_div[0]).html('');
 																$(sub_div[0]).data("initialized", 0);
