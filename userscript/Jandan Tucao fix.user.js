@@ -14,7 +14,6 @@ function injectTucaoFix() {
     for ( var i = 0 ; i < myElement.length; i++) {
         //console.log("i:" + i + " ? " + myElement[i]);
         myElement[i].addEventListener("click", function() {
-
             function wait_util(fn, condition, interval) {
                 interval = interval || 100;
                 return function () {
@@ -51,9 +50,8 @@ function injectTucaoFix() {
                 }
 
                 var res = $(sub_div[0]).html();
-                //似乎不保证在<a>的click前执行?为避免错误重置，依然加上<div id="ds-waiting"></div>的判断
-                //但假如多说返回超时，这里就不会强制重试了
-                if (res.length > 0 && res.length < 30 && res != '<div id="ds-waiting"></div>') {
+
+                if (res.length > 0 && res.length < 30 ) {
                     //if ($(sub_div[0]).html() == '评论框出错啦(990015): 服务异常,请联系客服人员' || $(sub_div[0]).html() =='<div id="ds-waiting"></div>' ) {
                     //重置状态，强制多说脚本重新向服务器请求
                     console.log(res + " reset...");
@@ -79,7 +77,7 @@ function injectTucaoFix() {
                     return true;
                 }, 200) ();
             }    
-        });
+        }, true);
     }
 
 }
