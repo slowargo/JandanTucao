@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jandan Tucao fix
 // @namespace    http://jandan.net/
-// @version      0.1
+// @version      0.2
 // @description  拯救被“评论框出错啦(990015): 服务异常,请联系客服人员”折磨的你~
 // @author       Slowargo
 // @include        http://jandan.net/*
