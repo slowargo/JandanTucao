@@ -4,6 +4,8 @@
 ##使用方法
 https://github.com/slowargo/JandanTucao/raw/master/JandanTucao_release.zip 下载后解压，然后通过Chrome的扩展管理页面的“加载已解压的扩展程序”功能加载。
 <br>
+如果你的浏览器有Tampermonkey之类的插件，点击https://github.com/slowargo/JandanTucao/raw/master/userscript/Jandan%20Tucao%20fix.user.js 直接安装userscript脚本。
+<br>
 ##问题分析
 多说的脚本embed.js在请求前会进行无脑初始化：
 ```
