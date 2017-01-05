@@ -89,7 +89,8 @@ function injectTucaoFix() {
     // Your code here...
     var allscripts = document.querySelectorAll("script");
     for (var itScript = 0; itScript < allscripts.length; itScript++) {
-        if (allscripts[itScript].src == 'http://cdn.jandan.net/static/js/tucao.js?v=20161230') {
+        //console.log(allscripts[itScript].src);
+        if (allscripts[itScript].src.indexOf('://cdn.jandan.net/static/js/tucao.js?v=20161230') !== -1) {
             console.log(allscripts[itScript].src);
             injectTucaoFix();
             return;
