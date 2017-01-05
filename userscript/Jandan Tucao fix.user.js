@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Jandan Tucao fix
 // @namespace    http://jandan.net/
-// @version      0.4
+// @version      0.5
 // @description  拯救被“评论框出错啦(990015): 服务异常,请联系客服人员”折磨的你~
 // @author       Slowargo
-// @include        http://jandan.net/*
+// @include      http://jandan.net/*
+// @include      https://jandan.net/*
 // @grant        none
 // ==/UserScript==
 
@@ -51,7 +52,7 @@ function injectTucaoFix() {
 
                 var res = $(sub_div[0]).html();
 
-                if (res.length > 0 && res.length < 30 ) {
+                if (res.length > 0 && res.length < 30 &&  res != '<div id="ds-waiting"></div>') {
                     //if ($(sub_div[0]).html() == '评论框出错啦(990015): 服务异常,请联系客服人员' || $(sub_div[0]).html() =='<div id="ds-waiting"></div>' ) {
                     //重置状态，强制多说脚本重新向服务器请求
                     console.log(res + " reset...");
