@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Jandan Tucao fix
 // @namespace    http://jandan.net/
-// @version      0.5
-// @description  拯救被“评论框出错啦(990015): 服务异常,请联系客服人员”折磨的你~
+// @version      0.6
+// @description  拯救被“评论框出错啦(990015): 服务异常,请联系客服人员”/“评论框出错啦(999999): 很抱歉,多说项目已关闭.请见http://duoshuo.com”折磨的你~
 // @author       Slowargo
 // @include      http://jandan.net/*
 // @include      https://jandan.net/*
