@@ -52,7 +52,7 @@ function injectTucaoFix() {
 
                 var res = $(sub_div[0]).html();
 
-                if (res.length > 0 && res.length < 30 &&  res != '<div id="ds-waiting"></div>') {
+                if (res.length > 0 && res.length < 50 &&  res != '<div id="ds-waiting"></div>') {
                     //if ($(sub_div[0]).html() == '评论框出错啦(990015): 服务异常,请联系客服人员' || $(sub_div[0]).html() =='<div id="ds-waiting"></div>' ) {
                     //重置状态，强制多说脚本重新向服务器请求
                     console.log(res + " reset...");
@@ -67,7 +67,8 @@ function injectTucaoFix() {
                         //如果这里放过了，很可能加载完成后多说返回990015，评论区就直接显示990015了
                         return false;
                     }
-                    if (retry-- > 0 && res.length > 0 && res.length < 30) {
+                    //console.log(res.length);
+                    if (retry-- > 0 && res.length > 0 && res.length < 50) {
                         console.log(res + " retry: " + retry);
                         //重新加载评论框
                         $(sub_div[0]).html('');
@@ -90,7 +91,7 @@ function injectTucaoFix() {
     var allscripts = document.querySelectorAll("script");
     for (var itScript = 0; itScript < allscripts.length; itScript++) {
         //console.log(allscripts[itScript].src);
-        if (allscripts[itScript].src.indexOf('://cdn.jandan.net/static/js/tucao.js?v=20161230') !== -1) {
+        if (allscripts[itScript].src.indexOf('://cdn.jandan.net/static/js/tucao.js?v=2017010501') !== -1) {
             console.log(allscripts[itScript].src);
             injectTucaoFix();
             return;
